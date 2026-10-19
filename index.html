@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffe0ec, #f7c5ff, #ffd9e8);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid white;
+      border-radius: 25px;
+      box-shadow: 0 15px 45px rgba(190, 80, 140, 0.2);
+      animation: appear 1s ease;
+      z-index: 2;
+    }
+
+    .heart {
+      font-size: 65px;
+      animation: heartbeat 1.3s infinite;
+    }
+
+    h1 {
+      color: #e84383;
+      margin: 15px 0;
+      font-size: 2.2rem;
+    }
+
+    p {
+      color: #67445b;
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .highlight {
+      color: #e84383;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 27px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(45deg, #ff5c9a, #e84383);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(232, 67, 131, 0.3);
+      transition: transform 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+    }
+
+    #message {
+      display: none;
+      margin-top: 22px;
+      color: #d63384;
+      font-weight: 600;
+      animation: appear 0.7s ease;
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: -40px;
+      font-size: 22px;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: floatUp 7s linear infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <div class="heart">🥺❤️</div>
+
+    <h1>I'm Sorry!</h1>
+
+    <p>
+      Hey, you! 💗
+    </p>
+
+    <p>
+      I don't know how to express everything perfectly,
+      but I genuinely want to say
+      <span class="highlight">I'm really sorry.</span>
+    </p>
+
+    <p>
+      If I hurt you with my words or actions, please know
+      that it was never my intention to make you feel bad.
+      Your friendship means a lot to me, and I never want
+      a misunderstanding to ruin it.
+    </p>
+
+    <p>
+      I'm not asking you to forget everything immediately.
+      I just hope you'll give me a chance to make things right.
+      💕
+    </p>
+
+    <button onclick="showMessage()">
+      One More Thing 💌
+    </button>
+
+    <div id="message">
+      Please forgive me when you're ready. 🥹❤️
+      <br><br>
+      No pressure, no excuses — just a sincere apology.
+      <br>
+      <span class="highlight">Your friend, always. 🌷</span>
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById("message");
+      message.style.display = "block";
+
+      document.querySelector("button").textContent =
+        "Sending you a virtual hug 🫂";
+
+      // Create a little shower of hearts
+      for (let i = 0; i < 15; i++) {
+        const heart = document.createElement("div");
+        heart.textContent = ["❤️", "💕", "💗", "🌸"][
+          Math.floor(Math.random() * 4)
+        ];
+
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-30px";
+        heart.style.fontSize = "25px";
+        heart.style.zIndex = "5";
+        heart.style.pointerEvents = "none";
+        heart.style.transition = "top 3s linear, opacity 3s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.style.top = "110vh";
+          heart.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => heart.remove(), 3200);
+      }
+    }
+
+    // Floating hearts in the background
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = ["❤️", "💗", "💕", "🌸"][
+        Math.floor(Math.random() * 4)
+      ];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
